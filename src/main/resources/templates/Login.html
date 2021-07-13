@@ -16,5 +16,17 @@
 </body>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+$('#ajax1').click(function () {
+    $.ajax({
+    type: "GET",
+    url: "/ajax/ajax1?name=sinyoung&age=10",
+    data: { param: 'string' },
+    success: function (data) {
+        console.log(data); alert('성공');
+        }
+    }).done(function (data) {
+        alert(data);
+    });
+});
 </html>
