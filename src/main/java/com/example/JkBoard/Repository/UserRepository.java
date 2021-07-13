@@ -1,9 +1,11 @@
 package com.example.JkBoard.Repository;
 
-import com.example.JkBoard.UserModel.UserModel;
+import com.example.JkBoard.Entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends JpaRepository<UserModel,Long> {
+import java.util.List;
+
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    @Override
+    List<UserEntity> findAll();
 }
