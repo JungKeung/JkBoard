@@ -6,29 +6,24 @@ import com.example.JkBoard.Repository.UserRepository;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+
 public class UserService {
+    private final UserRepository userRepository;
 
-    public List<UserDto> getList() {
-        List<UserDto> userDtoList = new ArrayList<> ();
-
-        for (UserDto userEntity : userDtoList) {
-            userDtoList.add(convertEntityToDto(userEntity));
-        }
-
-        return userDtoList;
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
-    private UserDto convertEntityToDto(UserDto userEntity) {
-        return UserDto.builder()
-                .id(userEntity.getId())
-                .email (userEntity.getEmail ())
-                .password (userEntity.getPassword ())
-                .build();
+    @Transactional
+    public String saveUser(UserDto userDto){
+        return userRepository.save ( userDto.toEntity ()).getEmail ();
     }
+
+
 }

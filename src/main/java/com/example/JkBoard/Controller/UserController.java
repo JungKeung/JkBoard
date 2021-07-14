@@ -1,5 +1,6 @@
 package com.example.JkBoard.Controller;
 
+import com.example.JkBoard.Dto.UserDto;
 import com.example.JkBoard.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,8 @@ public class UserController {
 
     // 로그인 페이지
     @GetMapping("/Login")
-    public String dispLogin() {
+    public String dispLogin(UserDto userDto) {
+        userService.saveUser ( userDto );
         return "/Login";
     }
 

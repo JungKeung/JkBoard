@@ -8,13 +8,26 @@
 <h1>로그인</h1>
 <hr>
 
-<form action="Board" method="post">
+
     <input type="text" name="username" placeholder="이메일 입력해주세요"><br>
     <input type="password" name="password" placeholder="비밀번호"><br>
-    <a href="Board">로그인</a>  <a href="Member">회원가입</a>
-</form>
+    <a href="Board" id="Login_Btn">로그인</a>  <a href="Member">회원가입</a>
+
 </body>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-
+<script>
+$('#Login_Btn').click(function () {
+    $.ajax({
+    type: "GET",
+    url: "Board",
+    data: 'html',
+    success: function (data) {
+        console.log(data); alert('성공');
+        }
+    }).done(function (data) {
+        alert(data);
+    });
+});
+</script>
 </html>
